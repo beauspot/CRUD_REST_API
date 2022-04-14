@@ -5,29 +5,20 @@ import { v4 as uuidv4 } from "uuid";
 const router = express.Router();
 
 // users db
-const users = [
-  {
-    firstName: "John",
-    lastName: "Doe",
-    age: 25,
-  },
-
-  {
-    firstName: "Jane",
-    lastName: "Doe",
-    age: 24,
-  },
-];
+const users = [];
 
 // all routes in here starts with /users
 router.get("/", (req, res) => {
   res.send(users);
 });
 
-// Adding users to our db
+// creating & Adding users to our db
 router.post("/", (req, res) => {
   const user = req.body;
-  users.push(user);
+  // generating a user id
+  const userID = uuidv4();
+  const userWithID = { ...user, id: userID };
+  users.push(userWithID);
 
   res.send(
     `The User with the name ${user.firstName}, the last name of ${user.lastName} has been aded to the database!`
