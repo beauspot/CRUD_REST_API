@@ -2,10 +2,12 @@ import { v4 as uuidv4 } from "uuid";
 //import { users } from "../usersdb.js";
 let users = [];
 
+// get user route
 export const getUser = (req, res) => {
   res.send(users);
 };
 
+// post || create user route.
 export const createUser = (req, res) => {
   const user = req.body;
   /*   
@@ -20,6 +22,7 @@ export const createUser = (req, res) => {
   );
 };
 
+// get a single user route.
 export const getSpecificUser = (req, res) => {
   const { id } = req.params;
 
@@ -28,12 +31,14 @@ export const getSpecificUser = (req, res) => {
   res.send(foundUser);
 };
 
+// delete a user route.
 export const deleteUser = (req, res) => {
   const { id } = req.params;
   users = users.filter((user) => user.id !== id);
   res.send(`The User with the id ${id} has been deleted from the database.`);
 };
 
+// update the user data route.
 export const updateUser = (req, res) => {
   const { id } = req.params;
   const { firstName, lastName, age } = req.body;
