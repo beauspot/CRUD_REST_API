@@ -15,6 +15,7 @@ router.get("/", (req, res) => {
 // creating & Adding users to our db
 router.post("/", (req, res) => {
   const user = req.body;
+
   // generating a user id
   const userID = uuidv4();
   const userWithID = { ...user, id: userID };
@@ -23,6 +24,15 @@ router.post("/", (req, res) => {
   res.send(
     `The User with the name ${user.firstName}, the last name of ${user.lastName} has been aded to the database!`
   );
+});
+
+// getting a specific user
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+
+    const foundUser = users.find((user) => user.id === id);
+    
+  res.send(foundUser);
 });
 
 export default router;
