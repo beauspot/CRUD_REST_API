@@ -5,14 +5,15 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-   "start": "nodemon index",
+    "start": "nodemon index",
     "dev": "nodemon index"
   },
   "keywords": [],
   "author": "Beau Iyere <beauspot@outlook.com>",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
